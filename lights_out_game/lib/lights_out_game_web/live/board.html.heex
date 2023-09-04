@@ -1,0 +1,28 @@
+<div class="space-y-6">
+  <div class="relative mx-auto max-w-md">
+    <.win_overlay win_point={@win_point} steps={@steps} />
+    <div class="grid grid-rows-5 grid-cols-5 gap-[1px] border-2 border-sky-500 bg-sky-600">
+      <%= for {{y, x}, value} <- @grid do %>
+        <.cell win_point={@win_point} x={x} y={y} value={value} />
+      <% end %>
+    </div>
+  </div>
+  <form class="block mx-auto space-y-4 text-white" phx-submit="restart">
+    <div class="block mx-auto w-fit space-x-2">
+      <label for="difficulty">Difficulty</label>
+      <input
+        type="range"
+        id="difficulty"
+        name="difficulty"
+        min="1"
+        max="25"
+        value={@difficulty}
+        phx-change="difficulty_changed"
+      />
+      <output for="difficulty"><%= @difficulty %></output>
+    </div>
+    <button class="block mx-auto px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded-full shadow-sm">
+      Restart
+    </button>
+  </form>
+</div>
