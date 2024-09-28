@@ -1,0 +1,22 @@
+# Untitled notebook
+
+```elixir
+my_app_root = Path.join(__DIR__, "..")
+
+Mix.install(
+  [
+    {:minesweeper, path: my_app_root, env: :dev}
+  ],
+  config_path: Path.join(my_app_root, "config/config.exs"),
+  lockfile: Path.join(my_app_root, "mix.lock")
+)
+```
+
+## Section
+
+```elixir
+alias Minesweeper.Board
+
+board = Board.new_with_difficulty(:easy)
+Board.cells(board)
+```

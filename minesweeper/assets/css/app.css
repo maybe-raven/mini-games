@@ -1,0 +1,295 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This file is for your main application CSS */
+#game {
+    background-color: #7e7e7e;
+}
+
+#game div {
+    float: left;
+    line-height: 0;
+    font-size: 0;
+    background-image: url(/images/sprite150-night.gif);
+}
+
+.time0 {
+    background-position: 0 0;
+    width: 20px;
+    height: 35px
+}
+
+.time1 {
+    background-position: -20px 0;
+    width: 20px;
+    height: 35px
+}
+
+.time2 {
+    background-position: -39px 0;
+    width: 20px;
+    height: 35px
+}
+
+.time3 {
+    background-position: -59px 0;
+    width: 20px;
+    height: 35px
+}
+
+.time4 {
+    background-position: -78px 0;
+    width: 20px;
+    height: 35px
+}
+
+.time5 {
+    background-position: -98px 0;
+    width: 20px;
+    height: 35px
+}
+
+.time6 {
+    background-position: -117px 0;
+    width: 20px;
+    height: 35px
+}
+
+.time7 {
+    background-position: -137px 0;
+    width: 20px;
+    height: 35px
+}
+
+.time8 {
+    background-position: -156px 0;
+    width: 20px;
+    height: 35px
+}
+
+.time9 {
+    background-position: -176px 0;
+    width: 20px;
+    height: 35px
+}
+
+.time- {
+    background-position: -195px 0;
+    width: 20px;
+    height: 35px
+}
+
+.open0 {
+    background-position: 0 -35px;
+    width: 24px;
+    height: 24px
+}
+
+.open1 {
+    background-position: -24px -35px;
+    width: 24px;
+    height: 24px
+}
+
+.open2 {
+    background-position: -48px -35px;
+    width: 24px;
+    height: 24px
+}
+
+.open3 {
+    background-position: -72px -35px;
+    width: 24px;
+    height: 24px
+}
+
+.open4 {
+    background-position: -96px -35px;
+    width: 24px;
+    height: 24px
+}
+
+.open5 {
+    background-position: -120px -35px;
+    width: 24px;
+    height: 24px
+}
+
+.open6 {
+    background-position: -144px -35px;
+    width: 24px;
+    height: 24px
+}
+
+.open7 {
+    background-position: -168px -35px;
+    width: 24px;
+    height: 24px
+}
+
+.open8 {
+    background-position: -192px -35px;
+    width: 24px;
+    height: 24px
+}
+
+.blank {
+    background-position: 0 -59px;
+    width: 24px;
+    height: 24px
+}
+
+.bombflagged {
+    background-position: -24px -59px;
+    width: 24px;
+    height: 24px
+}
+
+.bombdeath {
+    background-position: -48px -59px;
+    width: 24px;
+    height: 24px
+}
+
+.bombmisflagged {
+    background-position: -72px -59px;
+    width: 24px;
+    height: 24px
+}
+
+.bombrevealed {
+    background-position: -96px -59px;
+    width: 24px;
+    height: 24px
+}
+
+.question {
+    background-position: -120px -59px;
+    width: 24px;
+    height: 24px
+}
+
+.questionpressed {
+    background-position: -144px -59px;
+    width: 24px;
+    height: 24px
+}
+
+.facesmile {
+    background-position: 0 -83px;
+    width: 39px;
+    height: 39px
+}
+
+.facepressed {
+    background-position: -39px -83px;
+    width: 39px;
+    height: 39px
+}
+
+.faceooh {
+    background-position: -78px -83px;
+    width: 39px;
+    height: 39px
+}
+
+.facedead {
+    background-position: -117px -83px;
+    width: 39px;
+    height: 39px
+}
+
+.facewin {
+    background-position: -156px -83px;
+    width: 39px;
+    height: 39px
+}
+
+.bordertl {
+    background-position: 0 -122px;
+    width: 15px;
+    height: 15px
+}
+
+.bordertr {
+    background-position: -15px -122px;
+    width: 15px;
+    height: 15px
+}
+
+.borderbl {
+    background-position: -30px -122px;
+    width: 15px;
+    height: 15px
+}
+
+.borderbr {
+    background-position: -45px -122px;
+    width: 15px;
+    height: 15px
+}
+
+.bordertb {
+    background-position: -60px -122px;
+    width: 24px;
+    height: 15px
+}
+
+.borderjointl {
+    background-position: -84px -122px;
+    width: 15px;
+    height: 15px
+}
+
+.borderjointr {
+    background-position: -99px -122px;
+    width: 15px;
+    height: 15px
+}
+
+.borderlr {
+    background-position: -201px -59px;
+    width: 15px;
+    height: 24px
+}
+
+.borderlrlong {
+    background-position: -201px -59px;
+    width: 15px;
+    height: 48px
+}
+
+#mines_hundreds {
+    margin: 6px 0 7px 9px
+}
+
+#mines_tens {
+    margin: 6px 0 7px 0
+}
+
+#mines_ones {
+    margin: 6px 0 7px 0
+}
+
+#seconds_hundreds {
+    margin: 6px 0 7px 0
+}
+
+#seconds_tens {
+    margin: 6px 0 7px 0
+}
+
+#seconds_ones {
+    margin: 6px 9px 7px 0
+}
+
+#face {
+    margin-top: 4px;
+    margin-bottom: 5px
+}
+
+.dialog {
+    left: 24px;
+    top: 102px
+}

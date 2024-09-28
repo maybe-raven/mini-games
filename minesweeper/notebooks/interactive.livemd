@@ -1,0 +1,33 @@
+# Untitled notebook
+
+```elixir
+my_app_root = Path.join(__DIR__, "..")
+
+Mix.install(
+  [
+    {:minesweeper, path: my_app_root, env: :dev}
+  ],
+  config_path: Path.join(my_app_root, "config/config.exs"),
+  lockfile: Path.join(my_app_root, "mix.lock")
+)
+```
+
+## Section
+
+```elixir
+alias Minesweeper.Board
+alias Minesweeper.Board.Grid
+alias Minesweeper.Board.Tile
+```
+
+```elixir
+%Board{grid: grid} = board = Board.new_with_config(%{width: 30, height: 16, bomb_count: 0})
+
+board = Board.reveal_tile(board, {0, 0})
+
+board.grid
+|> :array.to_list()
+|> Enum.find(nil, fn row ->
+  row |> :array.to_list() |> Enum.find(nil, fn tile -> tile.state != :revealed end)
+end)
+```
