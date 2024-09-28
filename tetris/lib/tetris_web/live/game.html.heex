@@ -1,0 +1,120 @@
+<div class="flex flex-wrap-reverse sm:flex-nowrap max-w-[60%] sm:max-w-xl mx-auto sm:space-x-4 py-4 sm:pt-12">
+  <div class="flex w-full justify-center content-center place-items-center aspect-[2/3] bg-gray-600">
+    <%= if assigns[:board] do %>
+      <svg
+        phx-window-keydown={
+          unless @game_over do
+            "player_input"
+          end
+        }
+        phx-throttle="100"
+        viewBox={"0 0 #{@board.width} #{@board.height}"}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <%= if @paused do %>
+          <h1 class="absolute text-5xl text-stone-200">Paused</h1>
+        <% else %>
+          <g class="stroke-none">
+            <%= for {{x, y}, color} <- @fills do %>
+              <%= if y in @board.completed_rows do %>
+                <rect
+                  width="1"
+                  height="1"
+                  class="transition duration-500"
+                  x={x}
+                  y={y}
+                  fill="white"
+                />
+              <% else %>
+                <rect width="1" height="1" x={x} y={y} fill={color} />
+              <% end %>
+            <% end %>
+          </g>
+          <g class="stroke-gray-400 stroke-[0.02]">
+            <%= for x <- 1..@board.width-1 do %>
+              <line x1={x} x2={x} y1="0" y2={@board.height} />
+            <% end %>
+            <%= for y <- 1..@board.height-1 do %>
+              <line x1="0" x2={@board.width} y1={y} y2={y} />
+            <% end %>
+          </g>
+        <% end %>
+      </svg>
+      <%= if @game_over do %>
+        <div class="absolute rounded-lg flex flex-col p-8 bg-gray-900">
+          <div class="mb-6 text-stone-200">
+            <div class="text-sm">Game Over!</div>
+            <div class="text-5xl">Noob!</div>
+          </div>
+          <.new_game_button />
+        </div>
+      <% end %>
+    <% else %>
+      <div class="flex flex-col space-y-6">
+        <h1 class="text-5xl text-stone-200">Tetris</h1>
+        <.new_game_button />
+      </div>
+    <% end %>
+  </div>
+  <div class="flex flex-col w-full sm:w-max mb-2 sm:my-8">
+    <div class="grow sm:space-y-8 flex sm:flex-col items-center justify-items-center place-items-center place-content-around sm:place-content-start">
+      <div class="flex w-20 h-20 sm:w-40 sm:h-40 bg-gray-800 p-2 sm:p-4">
+        <.block_preview board={assigns[:board]} />
+      </div>
+      <div class="flex flex-col text-center">
+        <h1 class="text-stone-200">Score</h1>
+        <.score_label board={assigns[:board]} />
+      </div>
+      <%= if assigns[:high_score] do %>
+        <div class="flex flex-col text-center">
+          <h1 class="text-stone-200">High Score</h1>
+          <p class="text-white"><%= @high_score %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="hidden sm:flex items-center">
+      <div class="w-full">
+        <button class="btn-player-control" phx-click="player_control" phx-value-action="left">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              fill-rule="evenodd"
+              d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-col w-full">
+        <button class="btn-player-control" phx-click="player_control" phx-value-action="rotate">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              fill-rule="evenodd"
+              d="M4.755 10.059a7.5 7.5 0 0112.548-3.364l1.903 1.903h-3.183a.75.75 0 100 1.5h4.992a.75.75 0 00.75-.75V4.356a.75.75 0 00-1.5 0v3.18l-1.9-1.9A9 9 0 003.306 9.67a.75.75 0 101.45.388zm15.408 3.352a.75.75 0 00-.919.53 7.5 7.5 0 01-12.548 3.364l-1.902-1.903h3.183a.75.75 0 000-1.5H2.984a.75.75 0 00-.75.75v4.992a.75.75 0 001.5 0v-3.18l1.9 1.9a9 9 0 0015.059-4.035.75.75 0 00-.53-.918z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+        <button class="btn-player-control" phx-click="player_control" phx-value-action="down">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              fill-rule="evenodd"
+              d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="w-full">
+        <button class="btn-player-control" phx-click="player_control" phx-value-action="right">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              fill-rule="evenodd"
+              d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

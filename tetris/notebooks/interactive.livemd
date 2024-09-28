@@ -1,0 +1,22 @@
+# Untitled notebook
+
+```elixir
+my_app_root = Path.join(__DIR__, "..")
+
+Mix.install(
+  [
+    {:tetris, path: my_app_root, env: :dev}
+  ],
+  config_path: Path.join(my_app_root, "config/config.exs"),
+  lockfile: Path.join(my_app_root, "mix.lock")
+)
+```
+
+## Main
+
+```elixir
+alias Tetris.Block
+block = %Block{shape: :l, color: "red", rotations: 1}
+IO.inspect(block)
+Block.width(block)
+```

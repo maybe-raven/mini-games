@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This file is for your main application CSS */
+@layer components {
+    .btn-player-control {
+        @apply w-full aspect-square rounded-md shadow-sm ring-1 ring-slate-900/5 border-4 border-double border-zinc-400 fill-zinc-400 bg-slate-700;
+    }
+}
